@@ -17,7 +17,6 @@ nunjucks.configure('views', {
     express: app
 });
 
-app.set('port', process.env.PORT || 1234);
 app.set('view cache', false);
 app.set('view engine', 'html');
 
@@ -27,7 +26,6 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
-app.use(require('node-compass')({mode: 'expanded'}));
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', routes);
@@ -66,7 +64,3 @@ app.use(function(err, req, res, next) {
 
 
 module.exports = app;
-
-var server = app.listen(app.get('port'), function() {
-  console.log('Listening on port %d', server.address().port);
-});
