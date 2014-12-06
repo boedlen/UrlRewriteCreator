@@ -25,7 +25,7 @@ router.post('/', function(req, res) {
       oldUrl : data[0],
       newUrl : data[1],
       linenumber: linenumber
-     }
+     };
 
      var existingRecord = _.find(mappingData, function(elm){
       return elm.oldUrl === obj.oldUrl;
@@ -44,7 +44,7 @@ router.post('/', function(req, res) {
 
      var output = '<rewriteMap name="'+ rewritemapName +'" defaultValue="">\r\n';
 
-     _.each(mappingData, function(elm, idx){
+     _.each(mappingData, function(elm){
       output += '<add key="'+xmlencode(elm.oldUrl)+'" value="'+xmlencode(elm.newUrl)+'" />\r\n';
      });
      output += '</rewriteMap>';
