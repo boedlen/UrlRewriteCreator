@@ -54,9 +54,13 @@ router.post('/', function(req, res) {
 
 
 });
-
 function xmlencode(url){
-  return encodeURI(entities.encode(url));
+  url = url || '';
+  // Decode url to get as clean a string as possible
+  var encodedUrl = decodeURIComponent(url+'');
+  // Replace &
+  encodedUrl = encodedUrl.replace(/\&/g, '&amp;');
+  return encodedUrl;
 }
 
 module.exports = router;
